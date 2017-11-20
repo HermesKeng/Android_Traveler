@@ -3,8 +3,8 @@
     <string-array name="travelLocation">
         <item>bangkok</item>
         <item>tokyo</item>
-        <item>new york</item>
-        <item>london</item>
+        <item>newyork</item>
+        <item>londan</item>
         <item>singapore</item>
     </string-array>
     <string-array name="travelArriveDate">

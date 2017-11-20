@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
+
+    <ImageButton
+        android:id="@+id/shareBtn"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="false"
+        android:background="?android:selectableItemBackground"
+        android:baselineAlignBottom="false"
+        android:cropToPadding="false"
+        android:elevation="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/share"
+        android:layout_marginRight="20dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iconImg"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:srcCompat="@mipmap/food"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.52"
+        tools:ignore="ContentDescription,RtlHardcoded" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:paddingTop="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/iconImg"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlHardcoded">
+
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : Jane's Bakery"
+            android:textAppearance="@android:style/TextAppearance.Holo" />
+
+        <TextView
+            android:id="@+id/districtTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Position : Mahaton District"
+            android:textAppearance="@android:style/TextAppearance.Holo"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="202dp" />
+
+        <TextView
+            android:id="@+id/descriptionTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrition : The western bakery"
+            android:textAppearance="@android:style/TextAppearance.Holo"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -10,20 +10,19 @@ import android.widget.ImageView;
 public class Location {
 
     private String location;
-    private int imageId;
     private String arriveDate;
     private String leaveDate;
+    private int imageID;
 
-    public Location(String location,int id,String arriveDate,String leaveDate){
+    public Location(String location,int res,String arriveDate,String leaveDate){
         this.location = location.toUpperCase();
-        this.imageId = id;
         this.arriveDate = arriveDate;
         this.leaveDate = leaveDate;
+        this.imageID = res;
     }
     public String getLocation(){
         return location;
     }
-    public int getImageId(){
-        return imageId;
-    }
+    public int getImageID(){return imageID;}
+
 }

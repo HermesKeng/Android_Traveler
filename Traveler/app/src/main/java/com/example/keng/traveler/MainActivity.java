@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String[] locationStrList,arriveTimeStrList,leaveTimeStrList;
     ArrayList<Location> locationList = new ArrayList<Location>();
     final String LOC_TAG = "Location";
+    final String LOC_LIST_TAG = "LocationList";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         Location tempLocation;
         for(int i=0;i<locationStrList.length;i++){
-            int resID = getResources().getIdentifier(locationStrList[i],"drawable",getPackageName());
-            Log.e("test",String.valueOf(resID));
+            int resID =getResources().getIdentifier(locationStrList[i],"drawable",this.getPackageName());
             tempLocation = new Location(locationStrList[i],resID,arriveTimeStrList[i],leaveTimeStrList[i]);
             locationList.add(tempLocation);
         }
@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent detailIntent = new Intent(MainActivity.this,DetailActivity.class);
-
-            detailIntent.putExtra(LOC_TAG,locationStrList[i]);//remember pass i
+            detailIntent.putExtra(LOC_TAG,i);
             startActivity(detailIntent);
         }
     };
