@@ -3,7 +3,10 @@ package com.example.keng.traveler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +22,7 @@ public class DetailActivity extends AppCompatActivity {
     ListView itineraryListView;
     ArrayList<Schedule> schedules;
     ArrayAdapter<Schedule> scheduleArrayAdapter;
+    ImageButton shareBtn;
     public int setUpImage(int locationIndex){
         switch (locationIndex){
             case 0:
@@ -67,5 +71,7 @@ public class DetailActivity extends AppCompatActivity {
         scheduleArrayAdapter=new ScheduleArrayAdapter(this,schedules);
 
         itineraryListView.setAdapter(scheduleArrayAdapter);
+
+
     }
 }
