@@ -72,3 +72,32 @@
  2. (optional) **putExtra :** you can use it to pass parameter to another Intent,and also we have to set up tag to know what you pass
  3. (optional) If you pass the data from source Activity, you can create ```Bundle``` and implement  ```getData``` method
  4. (optional) ```getString(Tag,"defaultName")``` : use Tag to get data. If it doesn't have any value in the tag, the system is going to request the default Value which you set in getString method
+
+### Dialog
+- Dialog is a small window that prompts the user to make a decision or additional information
+- Dialog is the base class of dialog, we don't use it generally. Instead, use one of the follwing subclass
+  1. AlertDialog
+  2. DatePickerDialog and TimePickerDialog
+### How to build a dialog from default Alert layout ?
+ 1. Instantiate an AlertDialog.Builder with its constructer</br>
+ (General AlertDialog)
+ 2. Set the Title,Buttons and Message in the AlertDialog
+ 3. Get the AlertDialog and create it 
+ 4. Last Show the AlertDialog
+
+```Java
+AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+builder.setTitle("Title")
+       .setMessage("This is alert dialog");
+AlertDialog dialog = builder.create();
+dialog.show()
+```
+- If you want to set the list in the dialog, there are two methods to help you complete the task
+  1. SetItem Method : 
+     - This is the default methods for you to set the list inside your alert dialog.
+     - The array passes in to the ```SetItem``` Method, and set up the DialogInterface.OnClickListener.
+  2. Custom Dialog :
+     - The custom dialog is created by what you want the appearance of the dialog
+     - You can add a listview in your dialog, set the listview adpater, and call ```builder.setAdpter``` method to help you set up the listview
+     - Remember to call ```dialog.show()```
+  
