@@ -1,8 +1,12 @@
 package com.example.keng.traveler;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,15 +20,18 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ListView locationListView;
+    Toolbar toolbar;
     LocationArrayAdapter arrayAdapter;
     String[] locationStrList,arriveTimeStrList,leaveTimeStrList;
     ArrayList<Location> locationList = new ArrayList<Location>();
     final String LOC_TAG = "Location";
     final String LOC_LIST_TAG = "LocationList";
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         locationStrList = getResources().getStringArray(R.array.travelLocation);
         arriveTimeStrList = getResources().getStringArray(R.array.travelArriveDate);
@@ -50,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent detailIntent = new Intent(MainActivity.this,DetailActivity.class);
             detailIntent.putExtra(LOC_TAG,i);
+            detailIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(detailIntent);
         }
     };
-
 }

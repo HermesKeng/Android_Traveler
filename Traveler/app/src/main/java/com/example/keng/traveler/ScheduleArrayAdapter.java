@@ -1,11 +1,14 @@
 package com.example.keng.traveler;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,12 +32,18 @@ import java.util.ArrayList;
 /**
  * Created by keng on 18/11/2017.
  * reference : http://dharmikpatel.online/android-tutorials/alert-dialog/
+ * reference (return result from other Activity): https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
+ * reference (prevent double click action starting two times activity): https://stackoverflow.com/questions/8906456/prevent-opening-activity-for-multiple-times
  */
 
 public class ScheduleArrayAdapter extends ArrayAdapter<Schedule>{
 
+    Context activityContext;
+    final public int GET_EMAIL= 1;
     public ScheduleArrayAdapter(@NonNull Context context, ArrayList<Schedule> objects) {
         super(context,0,objects);
+        activityContext = context;
+
     }
 
     @Override
@@ -59,37 +68,11 @@ public class ScheduleArrayAdapter extends ArrayAdapter<Schedule>{
         shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder =new AlertDialog.Builder(view.getContext());
-                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-                View dialogView =layoutInflater.inflate(R.layout.share_dialog,null);
-                //builder.setView(dialogView);
-                ListView listView= dialogView.findViewById(R.id.friendList);
-                Button cancelBtn = dialogView.findViewById(R.id.cancelBtn);
+                Intent contactIntent = new Intent(getContext(),ContactInfo.class);
+                contactIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                Activity detailActivity = (Activity)activityContext;
+                detailActivity.startActivityForResult(contactIntent,GET_EMAIL);
 
-                // Put Content Provider Data inside
-                String[] values = new String[]{
-                        "Kevin","Hermes","Logan","Horse"
-                };
-                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(),R.layout.list_item,R.id.listRow,values);
-                listView.setAdapter(arrayAdapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Toast.makeText(getContext(),arrayAdapter.getItem(i),Toast.LENGTH_LONG).show();
-                    }
-                });
-                builder.setView(dialogView);
-                final AlertDialog dialog = builder.create();
-                Window window = dialog.getWindow();
-                window.setLayout(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                cancelBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
             }
         });
 

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Traveler</string>
+    <string name="shareBar">Share Your Friends</string>
     <string-array name="travelLocation">
         <item>bangkok</item>
         <item>tokyo</item>
@@ -21,4 +22,15 @@
         <item>2016.12.14</item>
         <item>2017.07.19</item>
     </string-array>
+    <string-array name="Category">
+        <item>Food</item>
+        <item>Scenery</item>
+    </string-array>
+    <string name="add">Add </string>
+    <string name="createSchedule">New Schedule</string>
+    <string name="addDialogName">Location</string>
+    <string name="addDialogDistrict">District</string>
+    <string name="addDialogCategory">Category</string>
+    <string name="addDialogDescription">Description</string>
+    <string name="Cancel">Cancel</string>
 </resources>
