@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -115,11 +116,14 @@ public class DetailActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-
-
                 dialog.show();
-
-
+            }
+        });
+        itineraryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getBaseContext(),schedules.get(position).getName(),Toast.LENGTH_SHORT).show();
+                Log.e(schedules.get(position).getName(),"123");
             }
         });
 
@@ -138,4 +142,5 @@ public class DetailActivity extends AppCompatActivity {
         }
         // add here
     }
+
 }
